@@ -85,7 +85,7 @@ const user = {
             result = null
         }
         return result
-    },
+    }
 }
 
 
