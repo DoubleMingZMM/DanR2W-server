@@ -9,7 +9,7 @@ const login = {
      */
     async loginByPassword( params ) {
         let _sql = `SELECT * from USER where password="${params.password}" and name="${params.name}" limit 1`
-        let result = await dbUtils.select(_sql)
+        let result = await dbUtils.query(_sql)
         if ( Array.isArray(result) && result.length > 0 ) {
             result = result[0]
         } else {
