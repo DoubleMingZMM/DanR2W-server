@@ -16,8 +16,11 @@ module.exports = router.post('/login', async ctx => {
         ctx.response.status = 200
         ctx.body ={
             code: 200,
-            data: [],
-            mas: 'success'
+            data: {
+                isLogin: true,
+                name: 'Daniel'
+            },
+            msg: 'success'
         }
     }
 })
