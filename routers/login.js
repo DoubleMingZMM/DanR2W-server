@@ -12,13 +12,14 @@ module.exports = router.post('/login', async ctx => {
         password
     }
     const data = await loginByPassword(params)
-    if (data.name === params.name && data.password === params.password) {
+    if (data.login.name === params.name && data.login.password === params.password) {
         ctx.response.status = 200
         ctx.body ={
             code: 200,
             data: {
                 isLogin: true,
-                name: 'Daniel'
+                name: 'Daniel',
+                menus: data.menu
             },
             msg: 'success'
         }

@@ -10,8 +10,14 @@ const login = {
     async loginByPassword( params ) {
         let _sql = `SELECT * from USER where password="${params.password}" and name="${params.name}" limit 1`
         let result = await dbUtils.query(_sql)
-        if ( Array.isArray(result) && result.length > 0 ) {
-            result = result[0]
+        let result_menu = await dbUtils.select('MENU',['id', 'key', 'title', 'path', 'icon'])
+        if ( Array.isArray(result) && result.length > 0 && Array.isArray(result_menu)) {
+            result = {
+                login: result[0],
+                menu: result_menu.map((v,k) => {
+                    return {...result_menu[k]}
+                })
+            }
         } else {
             result = null
         }
